@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Recognition</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-image: url('https://img.freepik.com/premium-photo/neon-blue-red-light-reflecting-concrete-wall_1268-13638.jpg?w=900');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+} 
+
+header {
+    background-color:#ff6666;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #007bff;
+}
+
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.hero-content {
+    flex-basis: 50%;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.hero-video {
+    flex-basis: 45%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.features {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+}
+
+.feature {
+    flex-basis: 30%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.feature i {
+    font-size: 3rem;
+    color: #007bff;
+    margin-bottom: 1rem;
+}
+
+.feature h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+  </style>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://img.freepik.com/premium-vector/icon-emoticon-concept-emotions-joy-sadness-vector-symbol-emotional-state-person-fun-longing_165079-505.jpg?w=740" alt="Logo">
+            </div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/login"> Emotion Recognition</a></li>
+                
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Discover the Power of Emotion Recognition</h1>
+                <p>Experience personalized movie recommendations based on your emotional responses.</p>
+                <a href="/login" class="btn">Get Started</a>
+            </div>
+           
+        </section>
+        <section class="features">
+            <div class="feature">
+                <i class="fas fa-camera"></i>
+                <h3>Facial Recognition</h3>
+                <p>Our advanced facial recognition technology detects and analyzes your emotional responses.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-chart-line"></i>
+                <h3>Emotion Tracking</h3>
+                <p>Track your emotional journey throughout the video with our real-time emotion tracking.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-film"></i>
+                <h3>Movie Recommendations</h3>
+                <p>Receive personalized movie recommendations based on your emotional responses.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Emotion Recognition. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

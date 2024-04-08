@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Register</title>
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <!-- Google Sign-In JavaScript SDK -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://img.freepik.com/free-vector/gradient-abstract-geometric-background_23-2149120169.jpg?size=626&ext=jpg&uid=R119208312&ga=GA1.1.1728076511.1704623196&semt=ais');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8); /* Transparent white background */
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 350px;
+            padding: 20px;
+            transition: all 0.3s ease; /* Added transition for smoother animation */
+        }
+        
+        .container:hover {
+            transform: translateY(-5px); /* Lift up on hover */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        form {
+            width: 100%;
+            max-width: 300px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #3498db;
+            color: #ffffff;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9; /* Darken color on hover */
+        }
+
+        .bottom {
+            color: #888888;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .bottom a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .bottom a:hover {
+            color: #21618c;
+        }
+
+        .social-btn {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+
+        .google-btn {
+            background-color: #dd4b39;
+        }
+
+        .facebook-btn {
+            background-color: #3b5998;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-to-home-button">Back to Home</a>
+        <div class="section" id="login-section">
+            <h2>Login</h2>
+            <form action="/login" method="post">
+                <input id="email" name="email" type="text" placeholder="Enter Your Email ID" class="textbox"/>
+                <input id="password" name="password" type="password" placeholder="Enter Your Password" class="textbox"/>
+                <input type="submit" class="btn" value="Login">
+            </form>
+            <p class="bottom">Don't have an account? <a href="#" onclick="showRegister()">Sign Up</a></p>
+            <button class="social-btn google-btn" onclick="loginWithGoogle()">Continue with Google</button>
+            <button class="social-btn facebook-btn" onclick="loginWithFacebook()">Continue with Facebook</button>
+        </div>
+        <div class="section" id="register-section" style="display: none;">
+            <h2>Register</h2>
+            <form action="/register" method="post">
+                <input id="first_name" name="first_name" type="text" placeholder="First Name" class="textbox"/>
+                <input id="last_name" name="last_name" type="text" placeholder="Last Name" class="textbox"/>
+                <input id="email" name="email" type="text" placeholder="Enter Your Email ID" class="textbox"/>
+                <input id="password" name="password" type="password" placeholder="Enter Your Password" class="textbox"/>
+                <input id="confirm_password" name="confirm_password" type="password" placeholder="Confirm Password" class="textbox"/>
+                <input id="show_password" name="show_password" type="checkbox" onclick="togglePasswordVisibility('password'); togglePasswordVisibility('confirm_password');"/>
+                Show Password
+                <input id="phone" name="phone" type="text" placeholder="Enter Your Phone Number" class="textbox"/>
+                <input type="submit" class="btn" value="Sign Up">
+            </form>
+            <p class="bottom">Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+        </div>
+    </div>
+
+    <script>
+        function showLogin() {
+            document.getElementById('login-section').style.display = 'block';
+            document.getElementById('register-section').style.display = 'none';
+        }
+
+        function showRegister() {
+            document.getElementById('login-section').style.display = 'none';
+            document.getElementById('register-section').style.display = 'block';
+        }
+
+        function togglePasswordVisibility(passwordId) {
+            const passwordInput = document.getElementById(passwordId);
+            passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+        }
+
+        function loginWithGoogle() {
+            alert('Logging in with Google!');
+            // Add your Google login logic here
+        }
+
+        function loginWithFacebook() {
+            alert('Logging in with Facebook!');
+            // Add your Facebook login logic here
+        }
+    </script>
+</body>
+</html>
